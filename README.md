@@ -175,6 +175,19 @@ The design choice that matters: it cannot change anything in the car.
 
 Reading your own car is one thing. Flashing, writing VINs, defeating immobilizers and jailbreaking head units can brick a car, void a warranty, and in many jurisdictions breach emissions or roadworthiness law. Several projects above are explicitly head-unit-only or read-only for that reason. Nothing here is advice; it is a record of what other people did.
 
+## Where this is still thin
+
+The list looks deep, but the depth is uneven. If you want to know where the actual frontier ends, it is here:
+
+1. **Almost everything is read, decode, or head unit.** Genuine verified *writes* are rare: the Jeep patched a fuel map to beat a smog test, the truck cloned a spare ECU, and neither was validated in closed loop against the OEM computer's own feedback. Nobody has shown an agent doing a full flash and then proving the car is healthy afterwards.
+2. **BMW engine-side work is still gated.** Every BMW entry here lives at the head unit, the OBD read path, or ISTA. Flashing a DME on a modern car still means signed firmware and a bench unlock from a specialist, so an agent holding a cable cannot reach the part that would be genuinely wild.
+3. **Toyota has no equivalent of the Jeep.** The Toyota side of this list is one research benchmark, one cable protocol bridge, and a handful of MCP servers over the connected-car API. There is no public "Claude rewrote a Toyota ECU" story yet, which is suspicious given how many 4Runners, Tacomas and Supras are modified. Likely candidates for the reason: DENSO's tooling culture and the A90 Supra being BMW electronics underneath anyway.
+4. **Nobody publishes failure rates.** Forums only surface the runs that worked. The Civic head unit and the iDrive work both invested heavily in backup and rollback, which is a tell: the ones who did not may simply not be posting.
+5. **Driving is a cone course, not driving.** The best result is a 5:22 lap of a 127 m parking lot at low speed with a human foot over the brake.
+6. **No accuracy benchmark against a dealer tool.** Nobody has published Claude's DTC-read and diagnosis accuracy versus ISTA or Techstream on a known-fault vehicle. That is the single most useful missing artifact.
+
+A v2 of this list should be judged on whether 1, 3 and 6 get filled in.
+
 ## How this list was made
 
 - X: 18 search passes, `Top` and `Latest`, roughly 640 unique posts, then a strict filter for posts that mention Claude *and* a car or diagnostic term.
