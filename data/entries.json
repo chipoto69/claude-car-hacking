@@ -400,5 +400,177 @@
         "https://github.com/pangzhenying2025/hermes-automotive-skills"
       ]
     }
+  ],
+  "efficiency": [
+    {
+      "setup": "Daihatsu Mira e:S dashboard, 36 PIDs",
+      "hardware_usd": 20,
+      "human_code_lines": 0,
+      "time_to_first_reading": "3-5 min with a working adapter; 5 days end to end",
+      "agent": "Claude Code",
+      "source": "note.com/wise_bee4925"
+    },
+    {
+      "setup": "BMW ENET read-only, every ECU",
+      "hardware_usd": 16,
+      "human_code_lines": 0,
+      "time_to_first_reading": "click Connect",
+      "agent": "Claude via MCP",
+      "source": "sembsa/bmw-enet-diag"
+    },
+    {
+      "setup": "Toyota/Lexus J2534 diagnostics",
+      "hardware_usd": 35,
+      "human_code_lines": 0,
+      "time_to_first_reading": "one Python run",
+      "agent": "Hermes Agent",
+      "source": "cyrusdavirusss/j2534-mcp-server"
+    },
+    {
+      "setup": "Civic head unit debloat and firmware audit",
+      "hardware_usd": 180,
+      "human_code_lines": 0,
+      "time_to_first_reading": "one evening",
+      "agent": "Claude Code",
+      "source": "r/ClaudeCode 6.7K upvotes"
+    },
+    {
+      "setup": "Rooted Android tablet carputer, zero extra apps",
+      "hardware_usd": 500,
+      "human_code_lines": 0,
+      "time_to_first_reading": "one evening",
+      "agent": "Claude Code in Termux",
+      "source": "ClawdBytes lukmandotdev"
+    },
+    {
+      "setup": "BMW E-series diagnostics + headless Pi/Grafana",
+      "hardware_usd": 30,
+      "human_code_lines": 0,
+      "time_to_first_reading": "one command",
+      "agent": "any (serve mode)",
+      "source": "Expos-AI/Klemme15"
+    },
+    {
+      "setup": "Car as chat-room agent, offline 35B model",
+      "hardware_usd": 120,
+      "human_code_lines": 0,
+      "time_to_first_reading": "install and run",
+      "agent": "local Qwen 35B",
+      "source": "ThinkOffApp/CarWatch"
+    },
+    {
+      "setup": "2009 Clio live dashboard on Pi 4",
+      "hardware_usd": 90,
+      "human_code_lines": 0,
+      "time_to_first_reading": "a weekend",
+      "agent": "Claude Code",
+      "source": "archworks.co"
+    },
+    {
+      "setup": "Drive logging + agent diagnosis under hard limits",
+      "hardware_usd": 40,
+      "human_code_lines": 0,
+      "time_to_first_reading": "one session",
+      "agent": "Claude Code",
+      "source": "datumsOG/ai-mechanic"
+    },
+    {
+      "setup": "Frontier model driving a real car",
+      "hardware_usd": 1500,
+      "human_code_lines": "harness",
+      "time_to_first_reading": "hours",
+      "agent": "Claude Code / Codex",
+      "source": "DrivingBench"
+    },
+    {
+      "setup": "1994 Jeep ECU read, copy, rewrite",
+      "hardware_usd": 3,
+      "human_code_lines": "wiring harness",
+      "time_to_first_reading": "about a week",
+      "agent": "Claude Code + Codex",
+      "source": "zulali"
+    }
+  ],
+  "efficiency_findings": [
+    "Zero hand-written code is now normal: three separate people shipped working in-car systems with none.",
+    "The adapter, not the agent, is the failure point. One project lost 3 of 5 days to a dead ELM327 clone; buy a named chip (FTDI/CP2102) or an OBDLink.",
+    "Cost per capability is falling: a read-only BMW ECU reader is free software plus a 15 euro cable. The expensive remaining work is firmware signing, not AI."
+  ],
+  "second_sweep": [
+    {
+      "name": "Daihatsu Mira e:S, 0 lines of code",
+      "date": "2026-07-18",
+      "note": "USB ELM327, system Python only, 36 PIDs, ~21 samples/sec, SQLite, SSE dashboard, PDF trip reports, 25.6 km/L estimated",
+      "links": [
+        "https://note.com/wise_bee4925/n/n7860794ba328"
+      ]
+    },
+    {
+      "name": "ThinkOffApp/CarWatch",
+      "date": "2026-08-09",
+      "stars": 305,
+      "note": "Pi 5 + dashcam + local 35B Qwen, ELM327 OBD, manual RAG with citations, ENET/DoIP documented as dead end",
+      "links": [
+        "https://github.com/ThinkOffApp/CarWatch"
+      ]
+    },
+    {
+      "name": "datumsOG/ai-mechanic",
+      "date": "2026-10-12",
+      "stars": 0,
+      "note": "model proposes, code decides; fixed reading list and rate; log-first Watch mode; 5 of 6 planted faults found on simulator",
+      "links": [
+        "https://github.com/datumsOG/ai-mechanic"
+      ]
+    },
+    {
+      "name": "Expos-AI/Klemme15",
+      "date": "2026-10-27",
+      "stars": 6,
+      "note": "free offline BMW E-series diagnostics on K+DCAN, plain-English faults, headless Pi/Grafana mode, battery-drain warning",
+      "links": [
+        "https://github.com/Expos-AI/Klemme15"
+      ]
+    },
+    {
+      "name": "car-can-checker",
+      "date": "2026-04-27",
+      "note": "Korean Claude Code plugin, one-line install, OBD2+CAN plus abnormal noise correlation",
+      "links": [
+        "https://velog.io/@aiengineer"
+      ]
+    },
+    {
+      "name": "cauliflowermossgrape/idrive7-apps",
+      "date": "2026-10-21",
+      "stars": 715,
+      "note": "shift lights, virtual dyno, brake and drag timers, G-meter, fault scanner, SDK",
+      "links": [
+        "https://github.com/cauliflowermossgrape/idrive7-apps"
+      ]
+    },
+    {
+      "name": "2009 Clio Pi dashboard",
+      "date": "2026-05-30",
+      "note": "Pi 4, cheap BLE dongle, local TSDB, Grafana, tablet HUD, boots with ignition",
+      "links": [
+        "https://archworks.co/posts/clio-obd-telemetry-pi/"
+      ]
+    },
+    {
+      "name": "IrvingGuerra/litedash",
+      "note": "1.8 MB Android car launcher with OBD2, TPMS, FM, USB player; non-AI efficiency baseline",
+      "links": [
+        "https://github.com/IrvingGuerra/litedash"
+      ]
+    },
+    {
+      "name": "perkthefox/mqb_contitool",
+      "date": "2026-10-24",
+      "note": "VAG component protection and engineering mode on a Renesas RH850 gateway",
+      "links": [
+        "https://github.com/perkthefox/mqb_contitool"
+      ]
+    }
   ]
 }

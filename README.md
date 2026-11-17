@@ -153,6 +153,48 @@ The design choice that matters: it cannot change anything in the car.
 
 ---
 
+## Efficiency: what actually costs what
+
+The interesting axis is not "can an agent read a car". It is what it costs in money, time and human code. These are measured numbers from the sources, not vibes. "Human code" means code the person wrote by hand.
+
+| Setup | Hardware cost | Human code | Time to first reading | Agent | Source |
+|---|---|---|---|---|---|
+| Daihatsu Mira e:S dashboard, 36 PIDs, 33 on screen, PDF trip reports | ~$20 USB ELM327 | **0 lines** | 3 to 5 min once a working adapter arrived (5 days end to end, 3 of them waiting on a replacement adapter) | Claude Code | note.com writeup |
+| BMW ENET read-only app, every ECU | ~€15 ENET cable | none, app provided | click Connect | Claude via MCP | `sembsa/bmw-enet-diag` |
+| Toyota/Lexus J2534 diagnostics | ~$35 Mini VCI | none, repo provided | one Python run | Hermes Agent | `cyrusdavirusss/j2534-mcp-server` |
+| Civic head unit debloat, firmware audit | $180 unit (already bought) | none | one evening | Claude Code | r/ClaudeCode, 6.7K upvotes |
+| Rooted Android tablet as a car computer, zero extra apps | tablet you own | none | one evening | Claude Code in Termux | ClawdBytes, `lukmandotdev` |
+| BMW E-series fault reading, plain English, plus Pi/Grafana headless mode | K+DCAN cable + optional Pi | none, repo provided | one command | any, `serve` mode | `Expos-AI/Klemme15` |
+| Car as a chat-room agent, offline 35B model, manual RAG | Pi 5 + Bluetooth ELM327 | none, repo provided | install and run | local Qwen 35B | `ThinkOffApp/CarWatch` (305 stars) |
+| Live dashboard on a 2009 Clio that boots with the car | Pi 4 + cheap blue BLE dongle | none, writeup | a weekend | Claude Code | archworks.co |
+| Drive logging plus agent-driven diagnosis inside hard limits | tablet/laptop + ELM327 | none, repo provided | one session | Claude Code | `datumsOG/ai-mechanic` |
+| Frontier model driving a real car | Comma 4 (4 figures) | harness | hours | Claude Code / Codex | DrivingBench |
+| 1994 Jeep ECU read, copy, rewrite | $3 Arduino | wiring harness | about a week | Claude Code + Codex | Zulali |
+
+Three things fall out of that table:
+
+1. **Zero hand-written code is now normal, not remarkable.** Three separate people describe shipping a working in-car system having typed no code: the Mira e:S dashboard, the Civic head unit, the tablet carputer. The human's job narrowed to plugging things in and pasting results back.
+2. **The adapter, not the agent, is the failure point.** The Mira e:S project burned three of its five days on a dead ELM327 clone. It also built a 120-combination probe (10 baud rates x 3 line endings x 4 control-line states) and optimised it from 9 minutes to 3.5 so nobody has to sit in the car waiting. Buy a dongle with a named chip, FTDI or CP2102, or an OBDLink.
+3. **Cost per capability is collapsing downward, not upward.** A read-only BMW ECU reader is now free software plus a €15 cable. A chat-room car agent with full manual RAG is one Pi. The expensive items left on the list are the ones touching drivetrain hardware, and that is a firmware-signing problem, not an AI problem.
+
+One practical warning worth repeating: `Klemme15`'s headless mode keeps the car's modules awake while it polls, and the docs say plainly to stop it or unplug when parked or the battery goes flat. Any always-on Pi rig has the same trap.
+
+## Second sweep: more builds, mostly quieter ones
+
+These arrived from Chinese, Japanese, Korean and decentralised sources after the first pass. They are less viral and in several cases more competent.
+
+- **Daihatsu Mira e:S, 0 lines of code, ~5 days** (Japanese, 18 Jul 2026). USB ELM327 into a kei car, Mac with system Python only, no Homebrew. 36 PIDs found, 33 displayed, ~21 samples/sec with RPM and speed at 2.4 Hz, SQLite logging, SSE dashboard in plain HTML, fuel economy derived from MAF, A4 PDF trip reports drawn with fpdf2 because Chrome was not installed. One 14.5 km commute produced 36,459 samples and an estimated 25.6 km/L. The agent also wrote the Amazon return justification for the dead adapter, compressed to fit the 200-character limit. https://note.com/wise_bee4925/n/n7860794ba328
+- **`ThinkOffApp/CarWatch`**, 305 stars, Aug 2026. Raspberry Pi 5 + dashcam + a local 35B Qwen, OBD-II over Bluetooth ELM327, owner's-manual RAG with page citations, hands-free voice on the Pi, self-update timer, phone dashboard served by the car. Documented honestly, including that the DoIP/ENET cable path was tried first and is a dead end on that car because no gateway answers. https://github.com/ThinkOffApp/CarWatch
+- **`datumsOG/ai-mechanic`**, Oct 2026. "The model proposes; code decides." The model can only request readings from a fixed list, at a fixed rate, and can only speak to the driver through fixed instructions, and a program in between enforces that rather than a sentence in the prompt. Watch mode logs every drive to the tablet first and uploads when it has signal, so a drive with no signal loses nothing. Found five of six planted faults on a simulator. https://github.com/datumsOG/ai-mechanic
+- **`Expos-AI/Klemme15`**, Oct 2026. Free offline BMW E-series diagnostics with a K+DCAN cable: plain-English faults, live data, guided tests, service functions, coding backup, session replay. Ships a headless `serve` mode for a Pi publishing to Grafana or MQTT, read-only. https://github.com/Expos-AI/Klemme15
+- **car-can-checker** (Korean, Apr 2026). A Claude Code plugin, installed in one line, that does OBD2 plus CAN full-stack diagnosis and correlates an **abnormal noise recording** with vehicle data, so you can point at the noise and the log together. https://velog.io/@aiengineer
+- **`cauliflowermossgrape/idrive7-apps`**, 715 stars, Oct 2026. The app side of the iDrive 7 story: shift lights, virtual dyno, brake and drag timers, G-meter, fault scanner, plus an SDK so you can write your own and install it on the car. Bigger than the store I credited in entry 2. https://github.com/cauliflowermossgrape/idrive7-apps
+- **2009 Clio on a Raspberry Pi**, Pi 4 with Arch, cheap Bluetooth dongle, local time-series database, Grafana for the long view, touch HUD on a car tablet, boots with the car, survives ignition cut mid-write. https://archworks.co/posts/clio-obd-telemetry-pi/
+- **`IrvingGuerra/litedash`**, a 1.8 MB Android car launcher with OBD2, TPMS, FM radio and USB player. Not AI, included as the efficiency baseline the AI projects are competing with.
+- **`perkthefox/mqb_contitool`**, Oct 2026. VAG component protection and engineering mode on a Renesas RH850 gateway. The kind of thing an agent is genuinely useful for: a lot of undocumented state and no GUI.
+
+The most valuable sentence from the second sweep, from a reply arguing against the hype: "the story isn't that Claude Code and Codex read a 1994 Jeep ECU, it's that the ECU was readable at all. OBD-I was a suggestion, not a lock. Point those agents at a 2024 CAN gateway with signed firmware and the $3 Arduino buys nothing but a bricked module."
+
 ## Honorable mentions
 
 - **CANExplorer MCP** (`akj7`), 1 Nov 2026. Prompt used: "You're connected to an unknown car's CAN bus over MCP. Find the vehicle speed signal. I have a GPS speed log. Don't transmit anything." Claude decoded it live and promoted the signal into a database entry. https://akj7.github.io
