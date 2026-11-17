@@ -7,12 +7,25 @@
       "title": "1994 Jeep Cherokee ECU reverse-engineered and rewritten with Claude Code + Codex over a $3 Arduino",
       "vehicle": "1994 Jeep Cherokee",
       "date": "2026-11-10",
-      "evidence": ["video", "thread"],
-      "agents": ["Claude Code", "Codex"],
-      "hardware": ["$3 Arduino", "custom harness to ECU"],
+      "evidence": [
+        "video",
+        "thread"
+      ],
+      "agents": [
+        "Claude Code",
+        "Codex"
+      ],
+      "hardware": [
+        "$3 Arduino",
+        "custom harness to ECU"
+      ],
       "outcome": "Live ECU reads, drive logging, full program copy, ran its own code, passed California smog test",
       "notable": "Claude offered to run the fuel pump and primed the rail for ~10s before being told to stop",
-      "engagement": { "youtube_views": 1461174, "hn_points": 450, "hn_comments": 239 },
+      "engagement": {
+        "youtube_views": 1461174,
+        "hn_points": 450,
+        "hn_comments": 239
+      },
       "links": [
         "https://www.youtube.com/watch?v=WPj3aQ-xxpI",
         "https://news.ycombinator.com/item?id=50463399"
@@ -24,14 +37,30 @@
       "title": "BMW iDrive 7/8 head unit rooted over one ENET cable, then Doom 3 on the dash",
       "vehicle": "BMW iDrive 7 / 8 (MGU head unit)",
       "date": "2026-11-15",
-      "evidence": ["repo"],
-      "agents": ["Claude Code"],
-      "hardware": ["BMW ENET (OBD to Ethernet) cable", "laptop"],
+      "evidence": [
+        "repo"
+      ],
+      "agents": [
+        "Claude Code"
+      ],
+      "hardware": [
+        "BMW ENET (OBD to Ethernet) cable",
+        "laptop"
+      ],
       "outcome": "Root SSH, app store on the dash, Waze on the cluster and HUD, YouTube, browser, live engine data, Doom",
       "ecosystem": [
-        { "repo": "cauliflowermossgrape/idrive7-8-ssh-root", "note": "debug image flash over ENET, open sourced 2026-10-22" },
-        { "repo": "robertnisipeanu/mgu-store", "note": "on-screen app store, created 2026-10-27, 723+ stars" },
-        { "repo": "robertnisipeanu/idrive-apps", "note": "CarPlay/AndroidAuto maps on cluster and HUD, created 2026-10-31, 377 stars" }
+        {
+          "repo": "cauliflowermossgrape/idrive7-8-ssh-root",
+          "note": "debug image flash over ENET, open sourced 2026-10-22"
+        },
+        {
+          "repo": "robertnisipeanu/mgu-store",
+          "note": "on-screen app store, created 2026-10-27, 723+ stars"
+        },
+        {
+          "repo": "robertnisipeanu/idrive-apps",
+          "note": "CarPlay/AndroidAuto maps on cluster and HUD, created 2026-10-31, 377 stars"
+        }
       ],
       "links": [
         "https://github.com/f0rgent/bmw-idrive-claude",
@@ -46,11 +75,26 @@
       "title": "Frontier models drive a real Toyota Corolla through a cone course via MCP tools",
       "vehicle": "2022 Toyota Corolla",
       "date": "2026-09-30",
-      "evidence": ["paper"],
-      "agents": ["Claude Fable 5.1 in Claude Code", "GPT-6 Astra in Codex", "GPT-5.6 Sol", "Grok 4.6 in Cursor"],
-      "hardware": ["Comma 4", "modified openpilot"],
+      "evidence": [
+        "paper"
+      ],
+      "agents": [
+        "Claude Fable 5.1 in Claude Code",
+        "GPT-6 Astra in Codex",
+        "GPT-5.6 Sol",
+        "Grok 4.6 in Cursor"
+      ],
+      "hardware": [
+        "Comma 4",
+        "modified openpilot"
+      ],
       "outcome": "Claude reached 45% of a 127 m course; GPT-6 Astra finished in 5:22",
-      "scores": { "gpt_6_astra": "100%", "claude_fable_5_1": "45%", "grok_4_6": "11%", "gpt_5_6_sol": "6%" },
+      "scores": {
+        "gpt_6_astra": "100%",
+        "claude_fable_5_1": "45%",
+        "grok_4_6": "11%",
+        "gpt_5_6_sol": "6%"
+      },
       "links": [
         "https://drivingbench.com/",
         "https://arxiv.org/html/2609.38948v1",
@@ -62,45 +106,86 @@
       "title": "Claude runs BMW ISTA+ headlessly and walks to the faulty component",
       "vehicle": "BMW G20",
       "date": "2026-09-01",
-      "evidence": ["repo"],
-      "agents": ["Claude"],
-      "hardware": ["Windows laptop running ISTA+"],
+      "evidence": [
+        "repo"
+      ],
+      "agents": [
+        "Claude"
+      ],
+      "hardware": [
+        "Windows laptop running ISTA+"
+      ],
       "outcome": "Read a stored charge-pressure fault, pulled BMW's test plan as text, identified the part; fault gone after replacement",
-      "links": ["https://github.com/chrisbray85/headless-ista"]
+      "links": [
+        "https://github.com/chrisbray85/headless-ista"
+      ]
     },
     {
       "rank": 5,
       "title": "AI decodes BMW CAN, ESP32 replaces the shifter, same trick for an i8 engine swap",
       "vehicle": "BMW (multiple)",
       "date": "2026",
-      "evidence": ["video"],
-      "agents": ["Claude Code"],
-      "hardware": ["ESP32", "CAN interface"],
+      "evidence": [
+        "video"
+      ],
+      "agents": [
+        "Claude Code"
+      ],
+      "hardware": [
+        "ESP32",
+        "CAN interface"
+      ],
       "outcome": "Shifter replaced by an ESP32; i8 swap CAN signals decoded; touchscreen steering wheel with paddle shifters",
-      "engagement": { "youtube_views": 129000 },
-      "links": ["https://www.csselectronics.com/pages/can-bus-sniffer-reverse-engineering"]
+      "engagement": {
+        "youtube_views": 129000
+      },
+      "links": [
+        "https://www.csselectronics.com/pages/can-bus-sniffer-reverse-engineering"
+      ]
     },
     {
       "rank": 6,
       "title": "A $35 Mini VCI cable becomes a J2534 MCP server for Toyota and Lexus",
       "vehicle": "Toyota / Lexus",
       "date": "2026-09-03",
-      "evidence": ["repo"],
-      "agents": ["any MCP client"],
-      "hardware": ["Mini VCI (FTDI FT232R) J2534 cable"],
+      "evidence": [
+        "repo"
+      ],
+      "agents": [
+        "Hermes Agent (README-targeted)",
+        "any MCP client"
+      ],
+      "hardware": [
+        "Mini VCI (FTDI FT232R) J2534 cable"
+      ],
       "outcome": "ISO15765 CAN channels, UDS + OBD-II, Toyota enhanced mode 0x21 ReadDataByLocalIdentifier, 12,000+ DTCs across 33 brands",
-      "links": ["https://github.com/cyrusdavirusss/j2534-mcp-server"]
+      "links": [
+        "https://github.com/cyrusdavirusss/j2534-mcp-server"
+      ],
+      "hermes_note": "README title reads: J2534 MCP Server - Vehicle Diagnostics for Hermes Agent"
     },
     {
       "rank": 7,
       "title": "AI clones a pickup ECU off an eBay spare and hunts the immobilizer",
       "vehicle": "GM pickup",
       "date": "2026",
-      "evidence": ["video"],
-      "agents": ["Claude", "Grok", "Codex"],
-      "hardware": ["SH-C31A adapter", "homemade harness", "Ghidra Pro"],
+      "evidence": [
+        "video"
+      ],
+      "agents": [
+        "Claude",
+        "Grok",
+        "Codex"
+      ],
+      "hardware": [
+        "SH-C31A adapter",
+        "homemade harness",
+        "Ghidra Pro"
+      ],
       "outcome": "Full read and write of a spare ECU including VIN; ~15 KB not copyable, narrowed to nine bytes in three slots",
-      "engagement": { "youtube_views": 526000 },
+      "engagement": {
+        "youtube_views": 526000
+      },
       "note": "Claude disengaged; Codex continued"
     },
     {
@@ -108,9 +193,16 @@
       "title": "Four Claude Code agents rendering on the car's centre screen, in a dealership",
       "vehicle": "BMW, Porsche",
       "date": "2026-10-19",
-      "evidence": ["claim"],
-      "agents": ["Claude Opus 5.5", "Claude Code"],
-      "hardware": ["CarPlay AI box over USB (Ottocast / Carlinkit Tbox class)"],
+      "evidence": [
+        "claim"
+      ],
+      "agents": [
+        "Claude Opus 5.5",
+        "Claude Code"
+      ],
+      "hardware": [
+        "CarPlay AI box over USB (Ottocast / Carlinkit Tbox class)"
+      ],
       "outcome": "Claimed CarPlay reverse engineering and a live multi-agent dashboard on the car screen",
       "caveat": "Engagement-driven posts, unverified beyond the posts themselves"
     },
@@ -119,11 +211,21 @@
       "title": "Proprietary CAN signals decoded into DBC files in minutes",
       "vehicle": "any",
       "date": "2026-07-06",
-      "evidence": ["video", "repo"],
-      "agents": ["Claude Code"],
-      "hardware": ["CANsub.2", "DSD TECH SH-C30A"],
+      "evidence": [
+        "video",
+        "repo"
+      ],
+      "agents": [
+        "Claude Code"
+      ],
+      "hardware": [
+        "CANsub.2",
+        "DSD TECH SH-C30A"
+      ],
       "outcome": "Speed, RPM and gauge signals decoded into DBC using OBD-II, vision OCR or human input as reference",
-      "engagement": { "youtube_views": 308000 },
+      "engagement": {
+        "youtube_views": 308000
+      },
       "links": [
         "https://github.com/CSS-Electronics/can-bus-reverse-engineering-skills",
         "https://www.youtube.com/watch?v=jQDqWuL5-nQ",
@@ -135,31 +237,138 @@
       "title": "Free macOS app reads every BMW ECU over an ENET cable, with MCP for Claude",
       "vehicle": "BMW F and G series (2012+)",
       "date": "2026-11-14",
-      "evidence": ["repo"],
-      "agents": ["Claude via MCP"],
-      "hardware": ["BMW ENET cable"],
+      "evidence": [
+        "repo"
+      ],
+      "agents": [
+        "Claude via MCP"
+      ],
+      "hardware": [
+        "BMW ENET cable"
+      ],
       "outcome": "Every control unit's faults with hints, live engine data against norms, guided engine check, read-only by design",
-      "links": ["https://github.com/sembsa/bmw-enet-diag"]
+      "links": [
+        "https://github.com/sembsa/bmw-enet-diag"
+      ]
     }
   ],
   "honorable_mentions": [
-    { "name": "CANExplorer MCP", "note": "live CAN reverse engineering over MCP, 2026-11-01", "author": "akj7", "links": ["https://akj7.github.io"] },
-    { "name": "shadetree-ai", "note": "read-only OBD-II MCP, tested on 2015 Toyota 4Runner and 2024 Toyota Highlander", "links": ["https://github.com/iamneilroberts/shadetree-ai"] },
-    { "name": "shengjia", "note": "47 ECU/TCU calibration skills incl. toyota-pedal-tuner, Bosch MG1/MD1/EDC17/DENSO", "links": ["https://github.com/liushengjia-AAL/shengjia"] },
-    { "name": "toyota-mcp", "note": "MyToyota Europe into Claude: fuel, range, location, trips, climate, remote commands", "links": ["https://github.com/zepgram/toyota-mcp"] },
-    { "name": "tars-car-mcp", "note": "OBD-II, UDS, GM bidirectional actuators, CAN sidecar; destructive tools labelled", "links": ["https://github.com/RobertSloan22/tars-car-mcp"] },
-    { "name": "q50-obd-scanner", "note": "KWP2000/UDS/OBD-II with embedded Claude agent behind a read-only gate, 844 tests", "links": ["https://github.com/darblinko/q50-obd-scanner"] },
-    { "name": "car-use", "note": "let your agent use your car, virtual car included", "links": ["https://github.com/october-dev/car-use"] },
-    { "name": "obd2-mcp-server", "note": "$15 Bluetooth adapter, broken convertible roof", "links": ["https://github.com/petrpatek/obd2-mcp-server"] },
-    { "name": "open-mechanic", "note": "OBD-II + Claude API into plain-English diagnosis and repair steps", "links": ["https://github.com/speed785/open-mechanic"] },
-    { "name": "RealOEM Searcher", "note": "BMW Group part numbers, supersession, VIN decode, fitment", "links": ["https://github.com/Cadtastic/RealOEM-Searcher"] },
-    { "name": "e30-rag", "note": "local multimodal RAG over BMW E30 repair manuals", "links": ["https://github.com/rublev/e30-rag"] },
-    { "name": "Civic head unit teardown", "note": "always-listening assistant at ~30% CPU, vendor firmware push channel, 6.7K upvotes", "links": ["https://www.reddit.com/r/ClaudeCode/comments/1xf2lur/"] },
-    { "name": "Range Rover tracker discovery", "note": "previous owner's app still had live location and unlock; claim", "links": [] },
-    { "name": "Iamcarhacker", "note": "OBD2 scan tool replacement, 320K views; AI diagnosis from a CSV drive log, 128K views", "links": [] },
-    { "name": "Yotty Labs", "note": "one prompt, live dashboard, Knight Rider reskin", "links": ["https://www.youtube.com/watch?v=W7ogaG4TlGc"] },
-    { "name": "Daihatsu Mira e:S dashboard", "note": "zero hand-written code, USB ELM327, about five days", "links": ["https://note.com/wise_bee4925/n/n7860794ba328"] },
-    { "name": "Bitvea Ford Focus MCP", "note": "deliberately read-only OBD-II MCP, written as much about restraint as about AI", "links": ["https://bitvea.com/en/blog/claude-mcp-car-diagnostics-obd2"] }
+    {
+      "name": "CANExplorer MCP",
+      "note": "live CAN reverse engineering over MCP, 2026-11-01",
+      "author": "akj7",
+      "links": [
+        "https://akj7.github.io"
+      ]
+    },
+    {
+      "name": "shadetree-ai",
+      "note": "read-only OBD-II MCP, tested on 2015 Toyota 4Runner and 2024 Toyota Highlander",
+      "links": [
+        "https://github.com/iamneilroberts/shadetree-ai"
+      ]
+    },
+    {
+      "name": "shengjia",
+      "note": "47 ECU/TCU calibration skills incl. toyota-pedal-tuner, Bosch MG1/MD1/EDC17/DENSO",
+      "links": [
+        "https://github.com/liushengjia-AAL/shengjia"
+      ]
+    },
+    {
+      "name": "toyota-mcp",
+      "note": "MyToyota Europe into Claude: fuel, range, location, trips, climate, remote commands",
+      "links": [
+        "https://github.com/zepgram/toyota-mcp"
+      ]
+    },
+    {
+      "name": "tars-car-mcp",
+      "note": "OBD-II, UDS, GM bidirectional actuators, CAN sidecar; destructive tools labelled",
+      "links": [
+        "https://github.com/RobertSloan22/tars-car-mcp"
+      ]
+    },
+    {
+      "name": "q50-obd-scanner",
+      "note": "KWP2000/UDS/OBD-II with embedded Claude agent behind a read-only gate, 844 tests",
+      "links": [
+        "https://github.com/darblinko/q50-obd-scanner"
+      ]
+    },
+    {
+      "name": "car-use",
+      "note": "let your agent use your car, virtual car included",
+      "links": [
+        "https://github.com/october-dev/car-use"
+      ]
+    },
+    {
+      "name": "obd2-mcp-server",
+      "note": "$15 Bluetooth adapter, broken convertible roof",
+      "links": [
+        "https://github.com/petrpatek/obd2-mcp-server"
+      ]
+    },
+    {
+      "name": "open-mechanic",
+      "note": "OBD-II + Claude API into plain-English diagnosis and repair steps",
+      "links": [
+        "https://github.com/speed785/open-mechanic"
+      ]
+    },
+    {
+      "name": "RealOEM Searcher",
+      "note": "BMW Group part numbers, supersession, VIN decode, fitment",
+      "links": [
+        "https://github.com/Cadtastic/RealOEM-Searcher"
+      ]
+    },
+    {
+      "name": "e30-rag",
+      "note": "local multimodal RAG over BMW E30 repair manuals",
+      "links": [
+        "https://github.com/rublev/e30-rag"
+      ]
+    },
+    {
+      "name": "Civic head unit teardown",
+      "note": "always-listening assistant at ~30% CPU, vendor firmware push channel, 6.7K upvotes",
+      "links": [
+        "https://www.reddit.com/r/ClaudeCode/comments/1xf2lur/"
+      ]
+    },
+    {
+      "name": "Range Rover tracker discovery",
+      "note": "previous owner's app still had live location and unlock; claim",
+      "links": []
+    },
+    {
+      "name": "Iamcarhacker",
+      "note": "OBD2 scan tool replacement, 320K views; AI diagnosis from a CSV drive log, 128K views",
+      "links": []
+    },
+    {
+      "name": "Yotty Labs",
+      "note": "one prompt, live dashboard, Knight Rider reskin",
+      "links": [
+        "https://www.youtube.com/watch?v=W7ogaG4TlGc"
+      ]
+    },
+    {
+      "name": "Daihatsu Mira e:S dashboard",
+      "note": "zero hand-written code, USB ELM327, about five days",
+      "links": [
+        "https://note.com/wise_bee4925/n/n7860794ba328"
+      ]
+    },
+    {
+      "name": "Bitvea Ford Focus MCP",
+      "note": "deliberately read-only OBD-II MCP, written as much about restraint as about AI",
+      "links": [
+        "https://bitvea.com/en/blog/claude-mcp-car-diagnostics-obd2"
+      ]
+    }
   ],
   "patterns": [
     "Read-only enforced in code, not in the prompt",
@@ -167,5 +376,29 @@
     "Ground truth beats model quality for CAN reverse engineering",
     "The cable is the moat, not the model",
     "BMW ENET is native on the A90/A91 GR Supra, so BMW tooling works on a Toyota"
+  ],
+  "agent_note": "Claude Code dominates this space but does not own it. Codex and Grok appear where several agents were run against each other, and a real Hermes Agent lane exists: the Toyota J2534 MCP server is titled for Hermes, HermesOBD targets Hermes for log analysis, and hermes-automotive-skills is a 102-skill conversion of the Claude Code automotive repo. Most entries are MCP servers, so the agent is swappable.",
+  "hermes_lane": [
+    {
+      "name": "j2534-mcp-server",
+      "note": "README titled Vehicle Diagnostics for Hermes Agent; Toyota/Lexus over Mini VCI; Toyota enhanced mode 0x21",
+      "links": [
+        "https://github.com/cyrusdavirusss/j2534-mcp-server"
+      ]
+    },
+    {
+      "name": "HermesOBD",
+      "note": "macOS SwiftUI OBD-II dashboard, ELM327 over BLE/serial/Wi-Fi, read-only with one guarded code-clear; verified on a 2005 Mustang with Innova 3210RS; 46 stars; created 2026-10-25",
+      "links": [
+        "https://github.com/trafalger1801/HermesOBD"
+      ]
+    },
+    {
+      "name": "hermes-automotive-skills",
+      "note": "102 Hermes SKILL.md files converted from automotive-claude-code-agents, 5,909 source files merged; 11 stars; created 2026-05-19",
+      "links": [
+        "https://github.com/pangzhenying2025/hermes-automotive-skills"
+      ]
+    }
   ]
 }

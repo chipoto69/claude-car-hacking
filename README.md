@@ -1,6 +1,8 @@
 # Claude, a cable, and a car
 
-A dated, sourced list of the wildest things people have actually done by plugging an AI agent (mostly Claude / Claude Code) into a real car: OBD-II dongles, BMW ENET cables, J2534 pass-thru, USB-CAN adapters, and one $3 Arduino.
+A dated, sourced list of the wildest things people have actually done by plugging an AI agent into a real car: OBD-II dongles, BMW ENET cables, J2534 pass-thru, USB-CAN adapters, and one $3 Arduino.
+
+**Which agent?** Claude Code is the loudest presence in this space, not the only one. Codex and Grok show up wherever someone ran two or three agents against each other, and there is a real Hermes lane (see [The Hermes lane](#the-hermes-lane)). Several entries are MCP servers, which means the agent is whatever you point at them, so "Claude did X" usually means "an MCP-capable agent did X, and Claude was the one on camera".
 
 **Sweep date: 17 November 2026.** Every entry was checked against a primary source during that sweep. Engagement numbers are as observed on that date.
 
@@ -32,6 +34,16 @@ Each entry carries an evidence tag:
 | 10 | A free macOS app that reads every BMW ECU over a cheap ENET cable, with MCP for your own Claude | BMW F/G series | 14 Nov 2026 | `repo` |
 
 ---
+
+## The Hermes lane
+
+The same work is being done with [Hermes Agent](https://hermes-agent.nousresearch.com) rather than Claude Code, and because MCP is the interface, the two lanes share almost all the hardware code. This list under-weights Hermes for a boring reason: Hermes users publish less, and the repos that do exist are younger and quieter than the Claude Code equivalents.
+
+- **`cyrusdavirusss/j2534-mcp-server`** (entry 6 below) is titled "Vehicle Diagnostics for **Hermes Agent**" in its own README. Toyota/Lexus over a $35 Mini VCI cable, with Toyota enhanced mode `0x21`. The agent is swappable, but Hermes is who it was written for.
+- **`trafalger1801/HermesOBD`**, 25 Oct 2026, 46 stars. A native macOS SwiftUI OBD-II dashboard, ELM327 over BLE, serial or Wi-Fi, built for a 2005 Mustang with an Innova 3210RS adapter. Read-only by design with one opt-in, guarded exception: clearing trouble codes. Live data and code reading verified on the car, CSV logging and clearing not yet. Aimed at Hermes Agent for analysis of the logs.
+- **`pangzhenying2025/hermes-automotive-skills`**, 19 May 2026, 11 stars. 102 automotive skills (ADAS, AUTOSAR, BMS, safety, cybersecurity, diagnostics, V2X, China GB standards) mechanically converted from the `automotive-claude-code-agents` repo into Hermes `SKILL.md` format, 5,909 source files merged into 102 skills. A clean example of skills being portable across agent runtimes even when the content is not.
+
+If you are building in this space the practical read is: write the capability as an MCP server or a skill, not as a prompt for one specific agent. Every project here that did that is still usable six months later.
 
 ## 1. The 1994 Jeep that Claude taught to pass smog
 **1994 Jeep Cherokee · 10 Nov 2026 · `video` `thread`**
@@ -96,7 +108,7 @@ Zero To 60 used AI to reverse-engineer the BMW shifter's CAN messages, then repl
 ## 6. A $35 Toyota cable turned into a J2534 MCP server
 **Toyota / Lexus · 3 Sep 2026 · `repo`**
 
-`cyrusdavirusss/j2534-mcp-server` bridges an AI agent straight to J2534 PassThru. Tested on Toyota and Lexus through a Mini VCI (FTDI FT232R) cable, but adapter-agnostic. It does raw device control, ISO15765 CAN channels with ECU flow-control filters, UDS and OBD-II send and receive, DTC read and clear, VIN, live data, manufacturer-aware DTC lookup across 12,000+ codes and 33 brands, and Toyota's enhanced mode `0x21` ReadDataByLocalIdentifier for the parameters OBD-II never exposes.
+`cyrusdavirusss/j2534-mcp-server` bridges an AI agent straight to J2534 PassThru, and its README is titled "Vehicle Diagnostics for Hermes Agent", which makes it the clearest Hermes-built entry here. Tested on Toyota and Lexus through a Mini VCI (FTDI FT232R) cable, but adapter-agnostic. It does raw device control, ISO15765 CAN channels with ECU flow-control filters, UDS and OBD-II send and receive, DTC read and clear, VIN, live data, manufacturer-aware DTC lookup across 12,000+ codes and 33 brands, and Toyota's enhanced mode `0x21` ReadDataByLocalIdentifier for the parameters OBD-II never exposes.
 
 The repo carries real diagnostic artifacts, not just code: `stall_log_crank.csv`, `stall_log_now.csv`, `sweep_sampler.py`, `toyota_scan.json`. Needs Windows with a 32-bit Python to load `MVCI32.dll`.
 
